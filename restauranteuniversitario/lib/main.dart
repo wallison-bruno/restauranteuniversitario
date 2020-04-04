@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -6,7 +7,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       home: Apresentation(),
     ),
@@ -24,12 +25,55 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text(
-            'Bem vindo ao RU',
-            style: TextStyle(
-              fontSize: 20,
-            ),
+          child: Icon(
+            Icons.restaurant,
+            color: Colors.white,
+            size: 40,
           ),
+        ),
+      ),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment(-1, 0),
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: 10,
+                      left: 10,
+                    ),
+                    child: Text(
+                      'Cardápio Semanal',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment(-1, 0),
+                  child: Container(
+                    padding: EdgeInsets.only(top: 10, left: 10, bottom: 10),
+                    child: Text(
+                      'Ecolha o dia da semana para consultar o cardápio.',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            _diaSemana('Segunda', context, "assets/images/img01.jpg"),
+            _diaSemana('Terça', context, "assets/images/img02.jpg"),
+            _diaSemana('Quarta', context, "assets/images/img03.jpg"),
+            _diaSemana('Quinta', context, "assets/images/img04.jpg"),
+            _diaSemana('Sexta', context, "assets/images/img05.jpg"),
+          ],
         ),
       ),
     );
@@ -60,33 +104,81 @@ Widget _introScreen() {
           loaderColor: Colors.transparent,
         ),
         Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 225),
-                height: 230,
-                width: 230,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/logo.png"),
+          child: Container(
+            height: 400,
+            width: 400,
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  height: 230,
+                  width: 230,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/logo.png"),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  'Restaurante Universitário',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    'Restaurante Universitário',
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      fontFamily: 'RobotoSlab',
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ],
+    ),
+  );
+}
+
+Widget _diaSemana(String nomeDia, BuildContext context, String imgUrl) {
+  return Expanded(
+    child: GestureDetector(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(imgUrl),
+              fit: BoxFit.cover,
+            ),
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black38,
+                offset: Offset(0.0, 2.0),
+                blurRadius: 10.0,
+              ),
+            ]),
+        margin: EdgeInsets.all(10),
+        child: Center(
+          child: Text(
+            nomeDia,
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  blurRadius: 10.0,
+                  color: Colors.black45,
+                  offset: Offset(5.0, 5.0),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     ),
   );
 }
