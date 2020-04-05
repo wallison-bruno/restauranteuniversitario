@@ -23,20 +23,44 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Icon(
-            Icons.restaurant,
-            color: Colors.white,
-            size: 40,
-          ),
-        ),
-      ),
       body: Container(
         child: Column(
           children: <Widget>[
             Column(
               children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height / 9,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(80),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black38,
+                          blurRadius: 10,
+                          offset: Offset(0.0, 2.0),
+                        )
+                        //alignment: Alignment(0.2, 0.6),
+                      ]),
+                  child: Align(
+                    alignment: Alignment(-1, 1),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Restaurante Universitário',
+                        style: TextStyle(
+                          color: Colors.white,
+                          //fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                          fontFamily: 'RobotoSlab',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 Align(
                   alignment: Alignment(-1, 0),
                   child: Container(
@@ -47,10 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       'Cardápio Semanal',
                       style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange,
-                      ),
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange,
+                          fontFamily: 'RobotoSlab'),
                     ),
                   ),
                 ),
