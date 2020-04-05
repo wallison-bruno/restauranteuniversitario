@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         //alignment: Alignment(0.2, 0.6),
                       ]),
                   child: Align(
-                    alignment: Alignment(-1, 1),
+                    alignment: Alignment(-1, 0.5),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
