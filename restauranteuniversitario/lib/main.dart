@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restauranteuniversitario/view/cardapio_view.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 void main() {
@@ -168,6 +169,10 @@ Widget _introScreen() {
 Widget _diaSemana(String nomeDia, BuildContext context, String imgUrl) {
   return Expanded(
     child: GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => CardapioScreen()));
+      },
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
